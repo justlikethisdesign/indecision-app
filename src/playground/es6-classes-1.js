@@ -11,6 +11,13 @@ class Person {
     }
 }
 
-const me = new Person('Rob', 25);
+class Student extends Person {
+    constructor(name, age, major){
+        super(name, age); // This calls the first constructor first
+        this.major = major;
+    }
+}
 
-console.log(me.getDescription());
+const me = new Student('Rob', 25, 'Computing');
+
+console.log(me);
