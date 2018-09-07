@@ -1,12 +1,16 @@
 class Person {
-    constructor(name = 'Anon') {
-        this.name = name
+    constructor(name = 'Anon', age = 0) {
+        this.name = name;
+        this.age = age;
     }
     getGreeting() {
         return `Hi. I am ${ this.name }!`;
     }
+    getDescription() {
+        return `${ this.name } is ${ this.age } year(s) old`;
+    }
 }
 
-const me = new Person();
+const me = new Person('Rob', 25);
 
-console.log(me.getGreeting());
+console.log(me.getDescription());
