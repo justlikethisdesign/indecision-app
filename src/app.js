@@ -21,12 +21,14 @@ const onFormSubmit = (e) => {
 
 };
 
-const removeAll = () => {
+const onRemoveAll = () => {
     app.options = [];
     renderTemplateApp();
 };
 
 const appRoot = document.getElementById('app');
+
+const numbers = [34,465,78];
 
 const renderTemplateApp = () => {
 
@@ -37,10 +39,16 @@ const renderTemplateApp = () => {
         <p>{app.options.length > 0 ? 'Here are your options' : 'No options'}</p>
         <p>{app.options.length}</p>
         <ol>
-          <li>Item ons</li>
-          <li>Item two</li>
+            {
+                app.options.map((option) => {
+                    return <li key={option}>{option}</li>
+                })
+            }
         </ol>
-        <button onClick={removeAll}>Remove All</button>
+        <button onClick={onRemoveAll}>Remove All</button>
+
+
+
         <form onSubmit={onFormSubmit}>
             <input type="text" name="option"/>
             <button>Add Option</button>
