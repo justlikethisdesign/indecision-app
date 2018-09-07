@@ -70,6 +70,34 @@ var Student = function (_Person) {
     return Student;
 }(Person);
 
-var me = new Student('Rob', 25, 'Computing');
+var Traveller = function (_Person2) {
+    _inherits(Traveller, _Person2);
 
-console.log(me.getDescription());
+    function Traveller(name, age, homeLocation) {
+        _classCallCheck(this, Traveller);
+
+        var _this2 = _possibleConstructorReturn(this, (Traveller.__proto__ || Object.getPrototypeOf(Traveller)).call(this, name));
+
+        _this2.homeLocation = homeLocation;
+        return _this2;
+    }
+
+    _createClass(Traveller, [{
+        key: 'getGreeting',
+        value: function getGreeting() {
+            var greeting = _get(Traveller.prototype.__proto__ || Object.getPrototypeOf(Traveller.prototype), 'getGreeting', this).call(this);
+
+            if (this.homeLocation) {
+                greeting += ' Im visiting from ' + this.homeLocation + '.';
+            }
+
+            return greeting;
+        }
+    }]);
+
+    return Traveller;
+}(Person);
+
+var me = new Traveller('Rob', 25, 'Rome');
+
+console.log(me.getGreeting());

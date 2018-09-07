@@ -30,6 +30,23 @@ class Student extends Person {
     }
 }
 
-const me = new Student('Rob', 25, 'Computing');
+class Traveller extends Person {
+    constructor(name, age, homeLocation){
+        super(name);
+        this.homeLocation = homeLocation;
+    }
+    getGreeting(){
+        let greeting = super.getGreeting();
 
-console.log(me.getDescription());
+        if( this.homeLocation ){
+            greeting += ` Im visiting from ${this.homeLocation}.`;
+        }
+
+        return greeting;
+
+    }
+}
+
+const me = new Traveller('Rob', 25, 'Rome');
+
+console.log(me.getGreeting());
