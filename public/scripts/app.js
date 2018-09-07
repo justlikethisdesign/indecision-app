@@ -51,11 +51,6 @@ var renderTemplateApp = function renderTemplateApp() {
             app.options.length > 0 ? 'Here are your options' : 'No options'
         ),
         React.createElement(
-            'p',
-            null,
-            app.options.length
-        ),
-        React.createElement(
             'ol',
             null,
             app.options.map(function (option) {
