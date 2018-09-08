@@ -1,10 +1,16 @@
 class IndecisionApp extends React.Component {
     render() {
+
+        const title = 'Indecision';
+        const subtitle = "Because you can't make decisions";
+
+        const options = ['Thing 1', 'Thing 2', 'Thing 4'];
+
         return (
             <div>
-                <Header />
+                <Header title={title} subtitle={subtitle}/>
                 <Action />
-                <Options />
+                <Options options={options}/>
                 <AddOptions />
             </div>
         );
@@ -15,8 +21,8 @@ class Header extends React.Component {
     render(){
         return (
             <div>
-                <h1>Indecision</h1>
-                <h2>Because you can't make decisions</h2>
+                <h1>{this.props.title}</h1>
+                <h2>{this.props.subtitle}</h2>
             </div>
         );
         return <p>This is from header</p>;
@@ -24,22 +30,29 @@ class Header extends React.Component {
 }
 
 class Action extends React.Component {
+    handlePick() {
+        alert('click');
+    }
     render() {
         return (
             <div>
-                <button>What should I do?</button>
+                <button onClick={this.handlePick}>What should I do?</button>
             </div>
         );
     }
 }
 
 class Options extends React.Component {
+    handleRemoveAll() {
+        alert('click');
+    }
     render() {
         return (
             <div>
-                <p>Options here</p>
-                <Option />
-                <Option />
+                <button onClick={this.handleRemoveAll}>Remove All</button>
+                {
+                this.props.options.map( (option) => <Option key={option} optionText={option}/> )
+                }
             </div>
         );
     }
@@ -49,17 +62,26 @@ class Option extends React.Component {
     render(){
         return (
             <div>
-                Option component here
+                {this.props.optionText}
             </div>
         );
     }
 }
 
 class AddOptions extends React.Component {
+    handleAddOption(e) {
+        e.preventDefault();
+        if ( e.target.option.value ) {
+            alert( e.target.option.value );
+        }
+    }
     render() {
         return (
             <div>
-                <p>Add Option Here</p>
+                <form onSubmit={this.handleAddOption}>
+                    <input type="text" name="option"/>
+                    <button>Add Option</button>
+                </form>
             </div>
         );
     }

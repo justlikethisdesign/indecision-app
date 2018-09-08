@@ -20,12 +20,18 @@ var IndecisionApp = function (_React$Component) {
     _createClass(IndecisionApp, [{
         key: 'render',
         value: function render() {
+
+            var title = 'Indecision';
+            var subtitle = "Because you can't make decisions";
+
+            var options = ['Thing 1', 'Thing 2', 'Thing 4'];
+
             return React.createElement(
                 'div',
                 null,
-                React.createElement(Header, null),
+                React.createElement(Header, { title: title, subtitle: subtitle }),
                 React.createElement(Action, null),
-                React.createElement(Options, null),
+                React.createElement(Options, { options: options }),
                 React.createElement(AddOptions, null)
             );
         }
@@ -52,12 +58,12 @@ var Header = function (_React$Component2) {
                 React.createElement(
                     'h1',
                     null,
-                    'Indecision'
+                    this.props.title
                 ),
                 React.createElement(
                     'h2',
                     null,
-                    'Because you can\'t make decisions'
+                    this.props.subtitle
                 )
             );
             return React.createElement(
@@ -81,6 +87,11 @@ var Action = function (_React$Component3) {
     }
 
     _createClass(Action, [{
+        key: 'handlePick',
+        value: function handlePick() {
+            alert('click');
+        }
+    }, {
         key: 'render',
         value: function render() {
             return React.createElement(
@@ -88,7 +99,7 @@ var Action = function (_React$Component3) {
                 null,
                 React.createElement(
                     'button',
-                    null,
+                    { onClick: this.handlePick },
                     'What should I do?'
                 )
             );
@@ -108,18 +119,24 @@ var Options = function (_React$Component4) {
     }
 
     _createClass(Options, [{
+        key: 'handleRemoveAll',
+        value: function handleRemoveAll() {
+            alert('click');
+        }
+    }, {
         key: 'render',
         value: function render() {
             return React.createElement(
                 'div',
                 null,
                 React.createElement(
-                    'p',
-                    null,
-                    'Options here'
+                    'button',
+                    { onClick: this.handleRemoveAll },
+                    'Remove All'
                 ),
-                React.createElement(Option, null),
-                React.createElement(Option, null)
+                this.props.options.map(function (option) {
+                    return React.createElement(Option, { key: option, optionText: option });
+                })
             );
         }
     }]);
@@ -142,7 +159,7 @@ var Option = function (_React$Component5) {
             return React.createElement(
                 'div',
                 null,
-                'Option component here'
+                this.props.optionText
             );
         }
     }]);
@@ -160,15 +177,28 @@ var AddOptions = function (_React$Component6) {
     }
 
     _createClass(AddOptions, [{
+        key: 'handleAddOption',
+        value: function handleAddOption(e) {
+            e.preventDefault();
+            if (e.target.option.value) {
+                alert(e.target.option.value);
+            }
+        }
+    }, {
         key: 'render',
         value: function render() {
             return React.createElement(
                 'div',
                 null,
                 React.createElement(
-                    'p',
-                    null,
-                    'Add Option Here'
+                    'form',
+                    { onSubmit: this.handleAddOption },
+                    React.createElement('input', { type: 'text', name: 'option' }),
+                    React.createElement(
+                        'button',
+                        null,
+                        'Add Option'
+                    )
                 )
             );
         }
