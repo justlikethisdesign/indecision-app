@@ -79,7 +79,8 @@ var IndecisionApp = function (_React$Component) {
                 }),
                 React.createElement(AddOptions, {
                     handleAddOption: this.handleAddOption
-                })
+                }),
+                React.createElement(User, { name: 'Andy', age: '12' })
             );
         }
     }]);
@@ -261,5 +262,24 @@ var AddOptions = function (_React$Component6) {
 
     return AddOptions;
 }(React.Component);
+
+var User = function User(props) {
+    return React.createElement(
+        'div',
+        null,
+        React.createElement(
+            'p',
+            null,
+            'Name: ',
+            props.name
+        ),
+        React.createElement(
+            'p',
+            null,
+            'Age: ',
+            props.age
+        )
+    );
+};
 
 ReactDOM.render(React.createElement(IndecisionApp, null), document.getElementById('app'));
