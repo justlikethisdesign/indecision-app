@@ -161,4 +161,4 @@ const User = (props) => {
 };
 
 
-ReactDOM.render( <IndecisionApp options={['one', 'twp']}/>, document.getElementById('app') );
+ReactDOM.render( <IndecisionApp />, document.getElementById('app') );
