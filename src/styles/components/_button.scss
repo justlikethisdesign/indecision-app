@@ -13,7 +13,7 @@ button:disabled {
     color: #fff;
     font-weight: bold;
     font-size: $l-size;
-    margin-bottom: $xl-size;
+    margin-bottom: $m-size;
     padding: 2.4rem;
     width: 100%;
 }
@@ -51,4 +51,12 @@ button:disabled {
 .button--link:focus {
     background: none;
     color: darken( $off-white, 10% );
+}
+
+@media ( min-width: $desktop-breakpoint ) {
+
+    .big-button {
+        margin-bottom: $xl-size;
+    }
+
 }
